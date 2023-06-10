@@ -1,27 +1,29 @@
-export function surname() {
+function surname() {
 
 }
 
-export function gender() {
+function gender() {
 
 }
 
-export function nameType() {
+function nameType() {
 
 }
 
-export function requiredName() {
+function requiredLetter() {
 
 }
 
-export function nameNumber() {
+function nameNumber() {
 
 }
 
-export function namePrefer() {
+function namePrefer() {
 
 }
 
-export function specification() {
+function specification() {
 
 }
+
+export { surname, gender, nameType, requiredLetter, nameNumber, namePrefer, specification }
