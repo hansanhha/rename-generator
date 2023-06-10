@@ -15,5 +15,33 @@ const routes = [
     { path: '/result', view: result },
 ]
 
+function findView(_pathname) {
+    const pathname = _pathname ?? window.location.pathname;
+    
+    return routes.find(route => route.path == pathname)?.view || notFound;
+}
+
+function render(el, pathname) {
+    const view = findView(pathname);
+    el.innerHTML = view();
+}
+
+function initRoute(el) {
+    render(el, '/');
+}
+
+function historyPush(pathname) {
+    window.history.pushState(null, null, window.location.origin + pathname);
+}
+
+function hisotryPop(el) {
+    render(el);
+}
+
+export { initRoute, historyPush, hisotryPop };
+
+
+
+
 
 
