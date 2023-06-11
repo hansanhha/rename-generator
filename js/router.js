@@ -1,32 +1,31 @@
-import { home } from "./views/home.js";
-import { optionList, specification } from "./views/options.js";
-import { result } from "./views/result.js";
-import { notFound } from "./views/notFound.js";
+import { home } from "./component/home.js";
+import { optionList } from "./component/options.js";
+import { result } from "./component/result.js";
+import { notFound } from "./component/notFound.js";
 
 const routes = [
-    { path: '/', view: home },
-    { path: '/option', view: optionList },
-    { path: '/specification', view: specification },
-    { path: '/result', view: result },
+    { path: '/', component: home },
+    { path: '/option', component: optionList },
+    { path: '/result', component: result },
 ]
 
-function findView(_pathname) {
+function findComponent(_pathname) {
     const pathname = _pathname ?? window.location.pathname;
     
-    return routes.find(route => route.path == pathname)?.view || notFound;
+    return routes.find(route => route.path == pathname)?.component || notFound;
 }
 
-function render(el, pathname) {
-    const view = findView(pathname);
-    el.innerHTML = view();
+function render(app, pathname, props) {
+    const component = findComponent(pathname);
+    app.innerHTML = component(props);
 }
 
 function historyPush(pathname) {
     window.history.pushState(null, null, window.location.origin + pathname);
 }
 
-function initRender(el) {
-    render(el, '/');
+function initRender(app) {
+    render(app, '/');
 }
 
 

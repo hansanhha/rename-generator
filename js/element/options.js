@@ -79,7 +79,3 @@ function preferNameCategory() {
         <button>다음</button>
     `;
 }
-
-export function specification() {
-
-}
