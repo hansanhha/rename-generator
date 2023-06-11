@@ -1,29 +1,9 @@
-function surname() {
-
+export function optionList() {
+    return [
+        "",
+    ]
 }
 
-function gender() {
+export function specification() {
 
 }
-
-function nameType() {
-
-}
-
-function requiredLetter() {
-
-}
-
-function nameNumber() {
-
-}
-
-function namePrefer() {
-
-}
-
-function specification() {
-
-}
-
-export { surname, gender, nameType, requiredLetter, nameNumber, namePrefer, specification }
