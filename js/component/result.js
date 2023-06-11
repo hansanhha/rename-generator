@@ -1,0 +1,1 @@
+import { result } from '../element/result.js';
