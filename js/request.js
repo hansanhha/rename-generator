@@ -1,4 +1,4 @@
-import { setGeneratedNames } from './app.js'
+import { setGeneratedNames } from 'https://hansanhha.github.io/name-generator/js/App.js'
 
 export async function generateName(param) {
 

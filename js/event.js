@@ -1,4 +1,4 @@
-import { render, elementRender, prevElementRender } from './router.js';
+import { render, elementRender, prevElementRender } from 'https://hansanhha.github.io/name-generator/js/router.js';
 
 const $app = document.querySelector('#app');
 

@@ -1,4 +1,4 @@
-import { prevElement, nextElement, nextView } from "../event.js"
+import { prevElement, nextElement, nextView } from "https://hansanhha.github.io/name-generator/js/event.js"
 
 export class Component {
 

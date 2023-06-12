@@ -1,6 +1,6 @@
-import { optionList } from '../element/options.js';
-import { Component } from './component.js';
-import { setSelectOptions } from '../app.js';
+import { optionList } from 'https://hansanhha.github.io/name-generator/js/element/options.js';
+import { Component } from 'https://hansanhha.github.io/name-generator/js/component/component.js';
+import { setSelectOptions } from 'https://hansanhha.github.io/name-generator/js/App.js';
 
 export class Option extends Component{
     

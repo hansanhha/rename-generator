@@ -1,7 +1,7 @@
-import { loading } from '../element/loading.js';
-import { Component } from './component.js';
-import { selectOptions, setGeneratedNames } from '../app.js';
-import { generateName } from "../request.js";
+import { loading } from 'https://hansanhha.github.io/name-generator/js/element/loading.js';
+import { Component } from 'https://hansanhha.github.io/name-generator/js/component/component.js';
+import { selectOptions, setGeneratedNames } from 'https://hansanhha.github.io/name-generator/js/App.js';
+import { generateName } from "https://hansanhha.github.io/name-generator/js/request.js";
 
 export class Generate extends Component{
     

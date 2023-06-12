@@ -1,5 +1,5 @@
-import { initRender } from './router.js';
-import { nextView } from './event.js';
+import { initRender } from 'https://hansanhha.github.io/name-generator/js/router.js';
+import { nextView } from 'https://hansanhha.github.io/name-generator/js/event.js';
 
 const $app = document.querySelector('#app');
 export let selectOptions;
