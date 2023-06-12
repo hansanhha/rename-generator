@@ -2,7 +2,7 @@ import { setGeneratedNames } from 'https://hansanhha.github.io/name-generator/js
 
 export async function generateName(param) {
 
-    const url = `https://estsotf-openapi-api.jejucodingcamp.workers.dev/`;
+    const url = `https://estsotf-openai-api.jejucodingcamp.workers.dev/`;
 
     const data = {
         role: 'user',
