@@ -1,5 +1,5 @@
-import { home } from 'https://hansanhha.github.io/name-generator/js/element/home.js';
-import { Component } from 'https://hansanhha.github.io/name-generator/js/component/component.js';
+import { home } from './../element/home.js';
+import { Component } from './component.js';
 
 export class Home extends Component{
 

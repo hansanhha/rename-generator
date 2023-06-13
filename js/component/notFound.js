@@ -1,5 +1,5 @@
-import { notFound } from 'https://hansanhha.github.io/name-generator/js/element/notFound.js';
-import { Component } from 'https://hansanhha.github.io/name-generator/js/component/component.js';
+import { notFound } from './../element/notFound.js';
+import { Component } from './component.js';
 
 export class NotFound extends Component{
 

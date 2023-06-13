@@ -1,4 +1,4 @@
-import { prevElement, nextElement, nextView } from "https://hansanhha.github.io/name-generator/js/event.js"
+import { prevElement, nextElement, nextView } from "./../event.js"
 
 export class Component {
 
@@ -6,15 +6,18 @@ export class Component {
 
     }
 
+    // element 응답
     getView() {
 
     }
 
+    // element의 다음 버튼 이벤트 등록
     configureEvent() {
         nextView();
         nextElement();
     }
 
+    // element의 이전 버튼 이벤트 등록
     configurePreEvent() {
         prevElement();
     }

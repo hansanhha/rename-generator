@@ -1,8 +1,8 @@
-import { Home } from "https://hansanhha.github.io/name-generator/js/component/home.js";
-import { Option } from "https://hansanhha.github.io/name-generator/js/component/options.js";
-import { Generate } from "https://hansanhha.github.io/name-generator/js/component/generating.js";
-import { Result } from "https://hansanhha.github.io/name-generator/js/component/result.js";
-import { NotFound } from "https://hansanhha.github.io/name-generator/js/component/notFound.js";
+import { Home } from "./component/home.js";
+import { Option } from "./component/options.js";
+import { Generate } from "./component/generating.js";
+import { Result } from "./component/result.js";
+import { NotFound } from "./component/notFound.js";
 
 let currentComponent;
 

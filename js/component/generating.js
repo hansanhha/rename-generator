@@ -1,7 +1,7 @@
-import { loading } from 'https://hansanhha.github.io/name-generator/js/element/loading.js';
-import { Component } from 'https://hansanhha.github.io/name-generator/js/component/component.js';
-import { selectOptions } from 'https://hansanhha.github.io/name-generator/js/data.js';
-import { generateName } from "https://hansanhha.github.io/name-generator/js/request.js";
+import { loading } from './../element/loading.js';
+import { Component } from './component.js';
+import { selectOptions } from './../data.js';
+import { generateName } from "./../request.js";
 
 export class Generate extends Component{
     
@@ -32,7 +32,7 @@ export class Generate extends Component{
             [[추천이름, 이름에 담긴 뜻, 이름을 사용하고 있는 유명인물(선택사항이야. 만약 있다면 넣어줘)], [...]]
             3. 성씨는 ${selectOptions.surname}이야
             4. 성별은 ${selectOptions.gender}이야
-            5. ${selectOptions.nameType}을 만들어줘
+            5. ${selectOptions.name_type}을 만들어줘
             6. '${selectOptions.requiredLetter}' 글자가 꼭 들어갔으면 좋겠어
             7. ${selectOptions.nameNumber} 글자 이름을 만들어줘
             8. ${selectOptions.prefer_name_category}으로 만들어줘
