@@ -1,6 +1,6 @@
-import { setGeneratedNames } from 'https://hansanhha.github.io/name-generator/js/App.js'
+import { setGeneratedNames } from 'https://hansanhha.github.io/name-generator/js/data.js'
 
-export async function generateName(param) {
+export function generateName(param) {
 
     const url = `https://estsotf-openai-api.jejucodingcamp.workers.dev/`;
 
@@ -9,7 +9,7 @@ export async function generateName(param) {
         content: param,
     }];
 
-    await fetch(url, {
+    fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -19,10 +19,15 @@ export async function generateName(param) {
     })
         .then(res => res.json())
         .then(data => {
-            // setGeneratedNames(data);
             console.log(data);
+            result = extractData(data);
+            // setGeneratedNames(result);
         })
         .catch(err => {
             console.log(err); 
         });
+}
+
+function extractData(data) {
+
 }

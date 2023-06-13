@@ -1,6 +1,6 @@
 import { loading } from 'https://hansanhha.github.io/name-generator/js/element/loading.js';
 import { Component } from 'https://hansanhha.github.io/name-generator/js/component/component.js';
-import { selectOptions, setGeneratedNames } from 'https://hansanhha.github.io/name-generator/js/App.js';
+import { selectOptions } from 'https://hansanhha.github.io/name-generator/js/data.js';
 import { generateName } from "https://hansanhha.github.io/name-generator/js/request.js";
 
 export class Generate extends Component{
@@ -16,7 +16,6 @@ export class Generate extends Component{
 
         return `
             ${this.element}
-            <a class="link" href="/result">결과보기</a>
         `;
     }
 

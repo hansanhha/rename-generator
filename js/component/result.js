@@ -1,6 +1,6 @@
 import { result } from 'https://hansanhha.github.io/name-generator/js/element/result.js';
 import { Component } from 'https://hansanhha.github.io/name-generator/js/component/component.js';
-import { generatedNames } from 'https://hansanhha.github.io/name-generator/js/App.js';
+import { generatedNames } from 'https://hansanhha.github.io/name-generator/js/data.js';
 
 export class Result extends Component{
     
