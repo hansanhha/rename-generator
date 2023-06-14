@@ -1,8 +1,10 @@
 import { Home } from "./component/home.js";
 import { Option } from "./component/options.js";
 import { Generate } from "./component/generating.js";
+import { Done } from "./component/done.js";
 import { Result } from "./component/result.js";
 import { NotFound } from "./component/notFound.js";
+import { Error } from "./component/error.js";
 
 let currentComponent;
 
@@ -10,6 +12,8 @@ const routes = [
     { path: '/', component: Home },
     { path: '/option', component: Option },
     { path: '/generating', component: Generate },
+    { path: '/done', component: Done },
+    { path: '/error', component: Error },
     { path: '/result', component: Result },
 ]
 
