@@ -1,34 +1,35 @@
-import { result } from './../element/result.js';
+import { resultElement } from './../element/result.js';
 import { Component } from './component.js';
-import { generatedNames } from './../data.js';
+import { result } from './../data.js';
 
 export class Result extends Component{
     
     constructor() {
         super();
-        this.index = 0;
-        this.dataList = generatedNames;   
+        this.index = 0;   
+        this.element = resultElement;
     }
 
     getView() {
-        const element = result(dataList[index]);
         this.index++;
         if (this.isLastIndex()) {
             return `
-                ${element}
+                ${this.element(result.generatedNames[index])}
+                ${result.ps}
                 <a class="link" href="/">Home</a>
             `;
         }
 
         if (index==0) {
             return `
-                ${element}
+                ${result.message}
+                ${this.element(result.generatedNames[index])}
                 <button class="link">다음</button>
             `;
         }
 
         return `
-            ${element}
+            ${this.element(result.generatedNames[index])}
             <button class="link prev">이전</button>
             <button class="link">다음</button>
         `;
@@ -36,24 +37,25 @@ export class Result extends Component{
     }
 
     getPreView() {
-        const element = result(dataList[index]);
         this.index--;
         if (this.isLastIndex()) {
             return `
-                ${element}
+                ${this.element(result.generatedNames[index])}
+                ${result.ps}
                 <a class="link" href="/">Home</a>
             `;
         }
 
         if (index==0) {
             return `
-                ${element}
+                ${result.message}
+                ${this.element(result.generatedNames[index])}
                 <button class="link">다음</button>
             `;
         }
 
         return `
-            ${element}
+            ${this.element(result.generatedNames[index])}
             <button class="link prev">이전</button>
             <button class="link">다음</button>
         `;
@@ -67,6 +69,6 @@ export class Result extends Component{
     }
 
     isLastIndex() {
-        return this.index == this.dataList.length;
+        return this.index == result.generatedNames.length-1;
     }
 }

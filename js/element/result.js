@@ -1,5 +1,5 @@
-export function result() {
+export function resultElement(props) {
     return `
-        <p>result test입니다</p>
+        
     `
 }
