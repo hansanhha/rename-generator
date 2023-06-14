@@ -24,18 +24,19 @@ export class Generate extends Component{
     }
 
     getRequestMessage() {
-        return `
-            내가 이름을 개명하려고 하는데 이름을 추천해줘
+        let message = `
             다음과 같은 요구사항을 만족해줘
-            1. 5개의 이름을 추천해줘
-            2. 다음과 같은 형식으로 답변을 줘
-            [[추천이름, 이름에 담긴 뜻, 이름을 사용하고 있는 유명인물(선택사항이야. 만약 있다면 넣어줘)], [...]]
-            3. 성씨는 ${selectOptions.surname}이야
-            4. 성별은 ${selectOptions.gender}이야
-            5. ${selectOptions.name_type}을 만들어줘
-            6. '${selectOptions.requiredLetter}' 글자가 꼭 들어갔으면 좋겠어
-            7. ${selectOptions.nameNumber} 글자 이름을 만들어줘
-            8. ${selectOptions.prefer_name_category}으로 만들어줘
-        `
+            1. '${selectOptions.surname}'씨 성과 어울리는 이름을 추천해줘
+            2. 성별은 ${selectOptions.gender}에 어울리는 이름을 추천해줘
+            3. ${selectOptions.name_type}으로 추천해줘
+            4. ${selectOptions.nameNumber} 글자 이름을 이름을 추천해줘
+            5. ${selectOptions.prefer_name_category}으로 추천해줘
+        `;
+        if (selectOptions.requiredLetter !== '') {
+            message += `
+                4. '${selectOptions.requiredLetter}' 글자가 꼭 들어갔으면 좋겠어
+            `
+        }
+        return message;
     }
 }
