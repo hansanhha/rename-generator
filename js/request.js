@@ -1,4 +1,4 @@
-import { $app, result } from './data.js';
+import { $root, result } from './data.js';
 import { render } from './router.js';
 
 const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
@@ -133,7 +133,7 @@ export function generateName(param) {
             const msg1 = extractMessage(data);
             let replyMsg = msg1;
 
-            // gpt 메시지 전송 중지시 이어받기
+            // gpt 메시지 전송 멈춤시 이어받기
             if (isStoppedReceive(data)) {
                 const continueData = await continueReceive();
                 const msg2 = extractMessage(continueData);
@@ -145,11 +145,11 @@ export function generateName(param) {
             const jsonReplyMsg = convertToJson(replyMsg);
             console.log(jsonReplyMsg);
             if (isConvertFailure(jsonReplyMsg)) {
-                return render($app, '/error');
+                return render($root, '/error');
             }
 
             registResult(jsonReplyMsg);
-            render($app, '/done');
+            render($root, '/done');
         })
         .catch(err => {
             console.log(err); 

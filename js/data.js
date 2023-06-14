@@ -6,7 +6,7 @@
  * Name: gpt가 답변한 내용을 나타내는 역할
  */
 
-export const $app = document.querySelector('#app');
+export const $root = document.querySelector('#root');
 
 export let selectOptions;
 

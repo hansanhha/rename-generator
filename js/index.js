@@ -1,8 +1,8 @@
 import { initRender } from './router.js';
 import { nextView, previousView } from './event.js';
-import { $app } from './data.js';
+import { $root } from './data.js';
 
-initRender($app);
+initRender($root);
 nextView();
 previousView();
 

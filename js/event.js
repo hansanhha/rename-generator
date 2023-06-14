@@ -1,6 +1,8 @@
 import { render, elementRender, prevElementRender } from './router.js';
+import { $root } from './data.js'
 
-const $app = document.querySelector('#app');
+// 버튼 및 앵커 태그 이벤트 등록
+// historyAPI 이벤트 등록
 
 // 다음 버튼 클릭시 다음 component render 및 history push(pushState) 
 export function nextView() {
@@ -11,7 +13,7 @@ export function nextView() {
             e.preventDefault(); 
             const pathname = e.target.getAttribute('href');
             historyPush(pathname);
-            render($app, pathname);
+            render($root, pathname);
         });
     });
 }
@@ -23,7 +25,7 @@ export function nextElement() {
     links.forEach((link) => {
         link.addEventListener('click', (e) => {
             e.preventDefault(); 
-            elementRender($app);
+            elementRender($root);
         });
     });
 }
@@ -35,7 +37,7 @@ export function prevElement() {
     links.forEach((link) => {
         link.addEventListener('click', (e) => {
             e.preventDefault(); 
-            prevElementRender($app);
+            prevElementRender($root);
         });
     });
 }
@@ -47,6 +49,6 @@ function historyPush(pathname) {
 export function previousView() {
 
     window.addEventListener('popstate', () => {
-        render($app);
+        render($root);
     })
 }
