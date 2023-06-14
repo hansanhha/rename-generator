@@ -1,8 +1,9 @@
 /**
  * 애플리케이션 전역 변수
- * selectOptions: 사용자가 입력한 값을 가진 객체
- * generatedNames: Name 객체 배열
- * Name: api 요청으로 받은 데이터를 토대로 만든 이름 객체
+ * $app: 컴포넌트를 render할 DOM
+ * selectOptions: 사용자가 입력한 값을 저장하는 역할
+ * Result: Name 객체를 생성하고 관리하는 역할, Name 객체 배열과 기타 메시지를 보유
+ * Name: gpt가 답변한 내용을 나타내는 역할
  */
 
 export const $app = document.querySelector('#app');
@@ -11,6 +12,11 @@ export let selectOptions;
 
 class Result {
 
+    /**
+     * generatedNames: Name 객체 배열
+     * message: gpt 메시지
+     * ps: gpt 추가 메시지
+     */
     generatedNames = [];
     message = '';
     ps = '';
@@ -57,8 +63,4 @@ export const result = new Result();
 export function setSelectOptions(options) {
     selectOptions = options;
     console.log(selectOptions);
-}
-
-export function setGeneratedNames(names) {
-    generatedNames.push(names);
 }
