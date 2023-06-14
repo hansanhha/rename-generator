@@ -11,7 +11,7 @@ export class Done extends Component {
     getView() {
         return `
             ${this.element};
-            <a class="link" href="/result">결과보기</a>
+            <a class="link" href="/name-generator/result">결과보기</a>
         `
     }
 

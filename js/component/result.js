@@ -16,7 +16,7 @@ export class Result extends Component{
             return `
                 ${this.element(result.generatedNames[index])}
                 ${result.ps}
-                <a class="link" href="/">Home</a>
+                <a class="link" href="/name-generator/">Home</a>
             `;
         }
 

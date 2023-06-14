@@ -145,11 +145,11 @@ export function generateName(param) {
             const jsonReplyMsg = convertToJson(replyMsg);
             console.log(jsonReplyMsg);
             if (isConvertFailure(jsonReplyMsg)) {
-                return render($root, '/error');
+                return render($root, '/name-generator/error');
             }
 
             registResult(jsonReplyMsg);
-            render($root, '/done');
+            render($root, '/name-generator/done');
         })
         .catch(err => {
             console.log(err); 

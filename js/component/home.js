@@ -11,7 +11,7 @@ export class Home extends Component{
     getView() {
         return `
                 ${this.element}
-                <a class="link" href="/option">다음</a>
+                <a class="link" href="/name-generator/option">다음</a>
             `;
     }
 

@@ -9,12 +9,12 @@ import { Error } from "./component/error.js";
 let currentComponent;
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/option', component: Option },
-    { path: '/generating', component: Generate },
-    { path: '/done', component: Done },
-    { path: '/error', component: Error },
-    { path: '/result', component: Result },
+    { path: '/name-generator/', component: Home },
+    { path: '/name-generator/option', component: Option },
+    { path: '/name-generator/generating', component: Generate },
+    { path: '/name-generator/done', component: Done },
+    { path: '/name-generator/error', component: Error },
+    { path: '/name-generator/result', component: Result },
 ]
 
 function findComponent(_pathname) {
@@ -44,7 +44,7 @@ export function prevElementRender(app) {
 }
 
 export function initRender(app) {
-    render(app, '/');
+    render(app, '/name-generator/');
 }
 
 

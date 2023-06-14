@@ -11,7 +11,7 @@ export class NotFound extends Component{
     getView() {
         return `
             ${this.element}
-            <a class="link" href="/">Home</a>
+            <a class="link" href="/name-generator/">Home</a>
         `;
     }
 

@@ -17,7 +17,7 @@ export class Option extends Component{
         if (this.isLastIndex()) {
             return `
                 ${element}
-                <a class="link" href="/generating">다음</a>
+                <a class="link" href="/name-generator/generating">다음</a>
             `;
         }
         return `
