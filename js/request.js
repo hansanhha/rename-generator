@@ -1,11 +1,10 @@
-import { setGeneratedNames, Name } from './data.js';
+import { $app, result } from './data.js';
+import { render } from './router.js';
 
-let url = `https://estsotf-openai-api.jejucodingcamp.workers.dev/`;
+const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
 // api 사용 후 데이터 가공
 export function generateName(param) {
-
-    const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
     const data = [{
         role: 'system',
@@ -13,28 +12,36 @@ export function generateName(param) {
     }, {
         role: 'user',
         content: `현대 한국 사람의 성명은 한 음절이나 두 음절의 성과 두 음절 이상의 이름으로 이뤄져 있어. 한 음절의 이름은 외자라고 해.
-        예를 들어 '선진호'라는 성명이 있으면 성은 '선', 이름은 '진호'야, '심청'이라는 성명이 있으면 성은 '심', 이름은 '청'이야.이걸 구분을 하는 게 중요해. 만약 너가 '인성'이라는 이름을 추천해준다면 배우 '조인성'을 추천해줄 수 있겠지. '조'가 성이고 '인성'이 이름이니까. 그럼 '정진'이라는 이름을 추천해주면 '정진우'라는 성명을 가진 인물을 소개해주면 안돼. 왜냐하면 '정진우'는 '정'이 성이고 '진우'가 이름이니까 추천해준 '정진'과 이름이 동일하지 않기 때문이지.`
+        예를 들어 '선진호'라는 성명이 있으면 성은 '선', 이름은 '진호'야, '심청'이라는 성명이 있으면 성은 '심', 이름은 '청'이야.이걸 구분을 하는 게 중요해. 
+        만약 너가 '인성'이라는 이름을 추천해준다면 배우 '조인성'을 추천해줄 수 있겠지. 
+        '조'가 성이고 '인성'이 이름이니까. 
+        그럼 '정진'이라는 이름을 추천해주면 '정진우'라는 성명을 가진 인물을 소개해주면 안돼. 
+        왜냐하면 '정진우'는 '정'이 성이고 '진우'가 이름이니까 추천해준 '정진'과 이름이 동일하지 않기 때문이지.
+        추가적으로 성과 이름의 첫 음절이 동일한 이름은 추천하지 말아줘
+        예를 들어 '김'씨 성에 어울리는 이름을 추천해달라고 할 때 '김'으로 시작하는 이름인 '김강'을 추천해주면 '김김강'이라는 우스꽝스러운 성명이 만들어지니까 말이야
+        내가 요구사항에 어떤 성에 어울리는 이름을 추천해달라고 할텐데, 이 점을 유의했으면 좋겠어.
+        `
     },{
         role: 'user',
-        content: `5개의 이름을 추천해줬으면 좋겠어. 답변은 message와 data 리스트라는 변수에 담아서 답변해주면 돼.
+        content: `내가 요구사항을 총 5~6가지 정도를 줄텐데, 요구사항을 적절히 만족한 이름을 선별해서 5가지의 이름을 추천해줘.
+        각각의 요구사항에 맞는 이름이 아니라 모든 요구사항에 만족한 이름을 한 가지씩 선별해서 총 5가지를 추천해주면 돼.
+        답변은 message와 data 리스트라는 변수에 담아서 답변해주면 돼.
         data 리스트는 너가 추천해준 이름을 담은 리스트고 그 이외에 하고 싶은 말은 message에 담아서 줘. 
         혹시 이름을 추천해준 뒤에 추가적으로 하고 싶은 말이 있으면 ps라는 변수에 담아서 줘.
         data 리스트의 형식은 다음과 같아
         data=[
             {"name":추천이름, "value":이름이 내포한 의미, "reason":추천 이유, "other":이름을 사용한 유명인물},{"name":추천이름, "value":이름이 내포한 의미, "reason":추천 이유, "other":이름을 사용한 유명인물}
             ]
-        위처럼 JSON 객체형태로 총 5개의 추천 내역 객체를 리스트에 담아서 추천해줘. 
-        data 리스트는 총 5개의 객체를 가지고 있고, 각각의 키는 내가 설명한대로 name, value, reaonse, other로 설정하고 각 값은 부탁한대로 알맞게 줘. 
+        위처럼 JSON 객체형태로 총 5개의 추천 내역 객체를 리스트에 담아서 추천해줘.
+        'name' 키 값에는 추천 이름,
+        'value' 키 값에는 이름이 내포한 의미를 상세히 작성해줘. 단순히 이름을 해석하는게 아니라 니가 나름대로 의미를 꾸며줘,
+        'reason' 키 값에는 니가 그 이름을 생각한 이유를 작성해줘. 예를 들어 "어떠한 사람이 되길 바라는 마음에서"라는 내가 잘되길 바라는 마음이라던지, "이러한 이름을 쓰면 이러한 기운이나 능력을 받을지도 몰라요~"라는 유머스러운 문장을 줬으면 좋겠어 억지가 있어도 괜찮아. 너가 추천한 문장을 보면서 웃음을 짓고 싶어. 
+        'other' 키 값에는 추천한 이름을 사용하는 동명이인을 소개해줘. 그 사람이 어떤 사람인지도 소개했으면 좋겠어. 만약 추천해줄 인물이 없다면 해당 객체의 person 키의 값은 빈 문자열 처리를 해줘. 
         그럼 message=전달하고 싶은 말, data=추천 이름 객체 리스트, ps=추가적으로 하고싶은 말 형태로 주면 돼.
-        너가 추천한 이름으로 한 사람의 이름이 바뀔 수 있으니 이름이 가진 의미를 최대한 상세하게 풀어서 적어줬으면 좋겠어. 
-        그리고 이름을 추천한 이유도 "어떠한 사람이 되길 바라는 마음에서"라는 내가 잘되길 바라는 마음이라던지, "이러한 이름을 쓰면 이러한 기운이나 능력을 받을지도 몰라요~"라는 유머스러운 문장을 줬으면 좋겠어 억지가 있어도 괜찮아. 
-        너가 추천한 문장을 보면서 웃음을 짓고 싶어. 
-        이름을 사용한 유명 인물을 소개할 때는 그 사람이 어떤 사람인지도 소개했으면 좋겠어. 
-        추천해줄 인물이 없다면 해당 객체의 person 키의 값은 빈 문자열 처리를 해줘. 
-        내가 지정한 형식대로만 답변을 해야돼`
+        너가 추천한 이름으로 한 사람의 이름이 바뀔 수 있으니 이름이 가진 의미를 최대한 상세하게 풀어서 적어줬으면 좋겠어.`
     },{
         role: 'user',
-        content: `이름은 한자 이름, 순우리말 이름, 영어 이름, 기독교적 의미를 내포한 이름들 중에서 내가 요청한 이름을 지어줘, 만약 과거에 인기있었던 이름을 요청하면 1930년대에서 1980년대까지의 이름 중에서 추천해줘, 만약 한자 이름을 추천하면 한자를 부르는 이름도 알려줘. 예를 들어 "영미 (英美)"라는 이름의 "꽃부리 영/뛰어날 영(英)"과 "아름다울 미(美)"라고 알려줘`
+        content: `이름은 한자 이름, 순우리말 이름, 영어 이름, 기독교적 의미를 내포한 이름들 중에서 내가 요청한 이름을 지어줘, 만약 과거에 인기있었던 이름을 요청하면 1930년대에서 1980년대까지의 이름 중에서 추천해줘, 만약 한자 이름을 추천하면 한자를 부르는 이름을 value(이름이 내포한 의미)에 알려줘. 예를 들어 "영미 (英美)"라는 이름이 있으면 value 값에 너가 꾸민 의미와 더불어서 "꽃부리 영/뛰어날 영(英)"과 "아름다울 미(美)"라고 알려주고 각각 무슨 의미를 갖는지를 설명해줘`
     },{
         role: 'user',
         content: `예를 들어서 다음과 같은 답변을 주면 돼 
@@ -50,8 +57,6 @@ export function generateName(param) {
         content: param,
     }];
 
-    console.log(data);
-
     fetch(url, {
         method: 'POST',
         headers: {
@@ -61,17 +66,98 @@ export function generateName(param) {
         body: JSON.stringify(data),
     })
         .then(res => res.json())
-        .then(data => {
-            extractData(data);
-            // console.log(result);
-            // setGeneratedNames(result);
+        .then(async data => {
+            const msg1 = extractMessage(data);
+            let replyMsg = msg1;
+
+            // gpt 메시지 전송 중지시 이어받기
+            if (isStoppedReceive(data)) {
+                const continueData = await continueReceive();
+                const msg2 = extractMessage(continueData);
+                const combineMsg = mergeMessage(msg1, msg2);
+                replyMsg = combineMsg;
+            }
+
+            console.log(replyMsg);
+            const jsonReplyMsg = convertToJson(replyMsg);
+            if (isConvertFailure(jsonReplyMsg)) {
+                return render($app, '/error');
+            }
+
+            registResult(jsonReplyMsg);
+            render($app, '/done');
         })
         .catch(err => {
             console.log(err); 
         });
 }
 
-function extractData(data) {
+/**
+ * 
+ * @param {string} data: gpt 전송 메시지
+ * @returns gpt 메시지 중 답변 본문 추출(content)
+ */
+function extractMessage(data) {
     const gptMessage = data['choices'][0]['message']['content'];
-    console.log(gptMessage);
+    return gptMessage;
+}
+
+/**
+ * 
+ * @param {string} data: gpt 전송 메시지
+ * @returns gpt 메시지가 중단되면 true
+ */
+function isStoppedReceive(data) {
+    const finishReason = data['choices'][0]['finish_reason'];
+    return finishReason === 'length';
+}
+
+/**
+ * gpt 답변 내용이 길어서 중지될 경우, 이어받기
+ * @returns 중지된 잔여 메시지
+ */
+async function continueReceive() {
+
+    const data = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        redirect: 'follow',
+        body: JSON.stringify([{role: 'user', content:'continue'}]),
+    })
+    return await data.json();
+
+}
+
+function mergeMessage(msg1, msg2) {
+    return msg1 + msg2;
+}
+
+function convertToJson(msg) {
+    const regex = /data\s*=\s*.*\s*message\s*=\s*.*\s*(ps\s*=\s*.*)?/gm;
+    const extractDict = msg.match(regex);
+    return JSON.parse(extractDict);
+}
+
+function isConvertFailure(msg) {
+    return msg == null;
+}
+
+/**
+ * 
+ * @param {JSON} content: gpt 답변 내용
+ * 전역변수 result에 답변 내용 등록
+ */
+function registResult(content) {
+    result.setMessage(content.message);
+
+    if (content.ps !== undefined && content.ps !== '') {
+        result.setMessage(content.ps);
+    }
+
+    const names = content.data;
+    names.forEach(name => {
+        result.push(name);
+    });
 }
