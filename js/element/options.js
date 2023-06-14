@@ -34,8 +34,6 @@ function nameType() {
         <div>
             <input type="radio" id="chinese_name" name="name_type" value="한자 이름" checked>
             <label for="chinese_name">한자 이름</label>
-            <input type="radio" id="english_name" name="name_type" value="영어 이름">
-            <label for="english_name">영어 이름</label>
             <input type="radio" id="christ_name" name="name_type" value="기독교적 의미를 내포한 이름">
             <label for="christ_name">기독교 이름</label>
             <input type="radio" id="korean_name" name="name_type" value="순우리말 이름">
@@ -48,14 +46,14 @@ function requiredLetter() {
     return `
         <label for="required_letter">혹시 필수로 들어갔으면 하는 글자가 있습니까?</label>
         <input type="text" id="required_letter" name="requiredLetter">
-        <button>없음</button>
+        <p>없으면 비워두시면 됩니다!</p>
     `;
 }
 
 function nameNumber() {
     return `
         <label for="name_number">글자수는 어느정도가 적당할까요?</label>
-        <input type="text" id="name_number" name="nameNumber" required>
+        <input type="text" id="name_number" name="nameNumber" required><span>글자</span>
     `;
 }
 
