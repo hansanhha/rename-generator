@@ -53,7 +53,14 @@ function requiredLetter() {
 function nameNumber() {
     return `
         <label for="name_number">글자수는 어느정도가 적당할까요?</label>
-        <input type="text" id="name_number" name="nameNumber" required><span>글자</span>
+        <div>
+            <input type="radio" id="two_name" name="name_number" value="2글자 (외자)">
+            <label for="two_name">2글자 이름 (외자)</label>
+            <input type="radio" id="three_name" name="name_number" value="3글자" checked>
+            <label for="three_name">3글자 이름</label>
+            <input type="radio" id="four_name" name="name_number" value="4글자">
+            <label for="four_name">4글자 이름</label>
+        </div>
     `;
 }
 
