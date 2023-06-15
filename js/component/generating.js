@@ -30,7 +30,7 @@ export class Generate extends Component{
             1. '${selectOptions.surname}'씨 성과 어울리는 이름을 추천해줘
             2. ${selectOptions.gender}에 어울리는 이름을 추천해줘
             3. ${selectOptions.name_type}으로 추천해줘
-            4. ${selectOptions.nameNumber} 글자 이름을 이름을 추천해줘
+            4. ${selectOptions.name_number} 이름을 추천해줘
             5. ${selectOptions.prefer_name_category}으로 추천해줘
             6. 결과는 문장은 제외하고 json으로만 해줘
         `;

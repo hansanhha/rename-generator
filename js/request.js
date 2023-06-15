@@ -32,12 +32,17 @@ export function generateName(param) {
 
         2. 성과 이름의 첫 음절이 동일한 이름은 추천하지 말아줘
         예를 들어 '김'씨 성에 어울리는 이름을 추천해달라고 할 때 '김'으로 시작하는 이름은 추천하지 말아줘
+
+        2글자의 이름을 추천해달라고 하면 성을 제외한 나머지 1글자의 이름을 추천해줘
+        3글자의 이름을 추천해달라고 하면 성을 제외한 나머지 2글자의 이름을 추천해줘
+        4글자의 이름을 추천해달라고 하면 성을 제외한 나머지 3글자의 이름을 추천해줘
         `
     },{
         role: 'assistant',
         content: `
         성을 알려주시면 그에 어울리는 이름을 생각해보겠습니다
         성과 이름의 첫 번째 음절이 동일한 이름은 추천해드리지않겠습니다
+        글자수에서 성을 뺀 나머지 개수만큼 이름을 추천해드리겠습니다
         `
     },{
         role: 'user',
@@ -78,7 +83,7 @@ export function generateName(param) {
         1. '이'씨 성과 어울리는 이름을 추천해줘
         2. 여성에 어울리는 이름을 추천해줘
         3. 한자 이름으로 추천해줘
-        4. 2 글자 이름을 이름을 추천해줘
+        4. 3 글자 이름을 추천해줘
         5. 일반적인 이름으로 추천해줘
         6. 결과는 문장은 제외하고 json으로만 해줘
         `        
@@ -99,6 +104,7 @@ export function generateName(param) {
     })
         .then(res => res.json())
         .then(async data => {
+            console.log(data);
             const msg1 = extractMessage(data);
             let replyMsg = msg1;
             let jsonReplyMsg;
