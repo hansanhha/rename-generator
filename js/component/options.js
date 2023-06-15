@@ -12,8 +12,7 @@ export class Option extends Component{
     }
 
     getView() {
-        const element = this.elements[this.index];
-        this.index++;
+        const element = this.elements[this.index++];
         if (this.isLastIndex()) {
             return `
                 ${element}

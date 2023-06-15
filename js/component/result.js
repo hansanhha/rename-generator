@@ -11,25 +11,24 @@ export class Result extends Component{
     }
 
     getView() {
-        this.index++;
         if (this.isLastIndex()) {
             return `
-                ${this.element(result.generatedNames[index])}
+                ${this.element(result.generatedNames[this.index])}
                 ${result.ps}
                 <a class="link" href="/name-generator/">Home</a>
             `;
         }
 
-        if (index==0) {
+        if (this.index==0) {
             return `
                 ${result.message}
-                ${this.element(result.generatedNames[index])}
+                ${this.element(result.generatedNames[this.index++])}
                 <button class="link">다음</button>
             `;
         }
 
         return `
-            ${this.element(result.generatedNames[index])}
+            ${this.element(result.generatedNames[this.index++])}
             <button class="link prev">이전</button>
             <button class="link">다음</button>
         `;
@@ -37,25 +36,17 @@ export class Result extends Component{
     }
 
     getPreView() {
-        this.index--;
-        if (this.isLastIndex()) {
-            return `
-                ${this.element(result.generatedNames[index])}
-                ${result.ps}
-                <a class="link" href="/">Home</a>
-            `;
-        }
 
-        if (index==0) {
+        if (this.index==0) {
             return `
                 ${result.message}
-                ${this.element(result.generatedNames[index])}
+                ${this.element(result.generatedNames[this.index])}
                 <button class="link">다음</button>
             `;
         }
 
         return `
-            ${this.element(result.generatedNames[index])}
+            ${this.element(result.generatedNames[this.index--])}
             <button class="link prev">이전</button>
             <button class="link">다음</button>
         `;
@@ -63,7 +54,7 @@ export class Result extends Component{
 
     configureEvent() {
         super.configureEvent();
-        if (index > 0) {
+        if (this.index > 0) {
             super.configurePreEvent();
         }
     }
