@@ -23,16 +23,11 @@ class Result {
 
     /**
      * 
-     * @param {JSON} nameDict: gpt 답변 객체 (name, value, other)
+     * @param {JSON} nameDict: gpt 답변 객체 (name, value, reason)
      */
     // Name 객체 생성 후 멤버 변수 배열에 삽입
-    push(nameDict) {
-        const name = new Name(nameDict.name, nameDict.value);
-
-        // gpt가 동명이인 유명인물(other)을 소개를 안해주는 경우도 있음
-        if (nameDict.other !== '') {
-            name.setOther(nameDict.other);
-        }
+    push(_name) {
+        const name = new Name(_name.name, _name.value, _name.reason);
         this.generatedNames.push(name);
     }
 
@@ -47,14 +42,10 @@ class Result {
 
 class Name {
 
-    constructor(name, comment) {
+    constructor(name, value, reason) {
         this.name = name;
-        this.comment = comment;
-        this.other = '';
-    }
-
-    setOther(other) {
-        this.other = other;
+        this.value = value;
+        this.reason = reason;
     }
 }
 
