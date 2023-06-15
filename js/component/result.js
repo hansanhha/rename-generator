@@ -15,7 +15,7 @@ export class Result extends Component{
             return `
                 ${this.element(result.generatedNames[this.index])}
                 ${result.ps}
-                <button class="link prev">이전</button>
+                <button class="prev">이전</button>
                 <a class="link" href="/name-generator/">Home</a>
             `;
         }
@@ -30,7 +30,7 @@ export class Result extends Component{
 
         return `
             ${this.element(result.generatedNames[this.index++])}
-            <button class="link prev">이전</button>
+            <button class="prev">이전</button>
             <button class="link">다음</button>
         `;
         
@@ -38,6 +38,7 @@ export class Result extends Component{
 
     getPreView() {
 
+        this.index--;
         if (this.index==0) {
             return `
                 ${result.message}
@@ -47,17 +48,15 @@ export class Result extends Component{
         }
 
         return `
-            ${this.element(result.generatedNames[this.index--])}
-            <button class="link prev">이전</button>
+            ${this.element(result.generatedNames[this.index])}
+            <button class="prev">이전</button>
             <button class="link">다음</button>
         `;
     }
 
     configureEvent() {
         super.configureEvent();
-        if (this.index > 0) {
-            super.configurePreEvent();
-        }
+        super.configurePreEvent();
     }
 
     isLastIndex() {
