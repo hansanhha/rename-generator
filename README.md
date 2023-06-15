@@ -12,3 +12,6 @@
 
 2. 기능
 * 요구사항을 입력받아 적절한 이름을 추천해준다
+
+# 배포주소
+https://hansanhha.github.io/name-generator/
