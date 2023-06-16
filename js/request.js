@@ -117,14 +117,11 @@ export function generateName(param) {
                 replyMsg = combineMsg;
             }
 
-            
-            console.log(replyMsg);
             try {
                 jsonReplyMsg = JSON.parse(replyMsg);
             } catch (e) {
                 return render($root, '/error');
             }
-            console.log('결과 '+jsonReplyMsg);
             
             registResult(jsonReplyMsg);
             render($root, '/name-generator/done');

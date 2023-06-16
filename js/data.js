@@ -53,5 +53,4 @@ export const result = new Result();
 
 export function setSelectOptions(options) {
     selectOptions = options;
-    console.log(selectOptions);
 }
