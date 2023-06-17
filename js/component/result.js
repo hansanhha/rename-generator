@@ -10,7 +10,7 @@ export class Result extends Component{
         this.element = resultElement;
     }
 
-    getView() {
+    getView(props) {
         if (this.isLastIndex()) {
             return `
                 ${this.element(result.generatedNames[this.index])}

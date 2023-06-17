@@ -1,16 +1,14 @@
-import { notFound } from './../element/notFound.js';
 import { Component } from './component.js';
 
 export class NotFound extends Component{
 
     constructor() {
         super();
-        this.element = notFound();
     }
 
-    getView() {
+    getView(props) {
         return `
-            ${this.element}
+            <p>404 Not Found</p>
             <a class="link" href="/name-generator/">Home</a>
         `;
     }
